@@ -1,213 +1,204 @@
 <!DOCTYPE html>
-<html lang="pa">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Meta Verification Code -->
-    <meta name="facebook-domain-verification" content="YOUR_META_VERIFICATION_CODE_HERE" />
-    
-    <title>PUNJAB NEWS NRI | Live Breaking News</title>
-    <!-- Google Fonts for Modern Typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary: #0f172a;
-            --accent: #dc2626;
-            --secondary: #2563eb;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text: #1e293b;
+    <title>PUNJAB NEWS NRI | Leading News & Media Portal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Merriweather:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#B91C1C',
+                        secondary: '#1E293B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    }
+                }
+            }
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: var(--bg); color: var(--text); }
-
-        /* Top Bar & Ticker (Node.js Dynamic Feature 1) */
-        .top-bar { background: #000; color: #fff; padding: 8px 5%; font-size: 13px; display: flex; justify-content: space-between; align-items: center; }
-        .ticker-wrap { display: flex; align-items: center; background: #111; color: #fff; padding: 5px 5%; border-bottom: 2px solid var(--accent); }
-        .ticker-title { background: var(--accent); padding: 4px 12px; font-weight: bold; border-radius: 3px; font-size: 12px; text-transform: uppercase; margin-right: 15px; }
-        .ticker-text { font-size: 14px; white-space: nowrap; overflow: hidden; }
-
-        /* Header */
-        header { background: linear-gradient(135deg, var(--primary), #1e293b); color: white; padding: 25px 5%; text-align: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
-        header h1 { font-size: 36px; font-weight: 700; letter-spacing: 1px; }
-        header p { font-size: 14px; opacity: 0.8; margin-top: 4px; }
-
-        /* Navigation */
-        nav { background: var(--primary); position: sticky; top: 0; z-index: 1000; border-top: 1px solid #334155; }
-        nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; }
-        nav ul li a { color: #f1f5f9; text-decoration: none; padding: 14px 22px; display: block; font-weight: 600; font-size: 14px; transition: 0.3s; }
-        nav ul li a:hover, nav ul li a.active { background: var(--accent); color: white; }
-
-        /* Main Grid Layout */
-        .container { display: grid; grid-template-columns: 3fr 1fr; gap: 25px; padding: 30px 5%; max-width: 1300px; margin: auto; }
-
-        /* News Cards Container */
-        .section-title { font-size: 20px; font-weight: 700; margin-bottom: 20px; border-left: 5px solid var(--accent); padding-left: 10px; color: var(--primary); }
-        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        
-        /* Modern Card Design */
-        .card { background: var(--card-bg); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s ease; }
-        .card:hover { transform: translateY(-5px); }
-        .card img { width: 100%; height: 180px; object-fit: cover; }
-        .card-body { padding: 18px; }
-        .card-tag { background: #e2e8f0; color: var(--primary); font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: 600; text-transform: uppercase; }
-        .card-body h3 { font-size: 17px; margin: 10px 0; color: var(--primary); line-height: 1.4; }
-        .card-body p { font-size: 13px; color: #64748b; line-height: 1.5; }
-
-        /* Sidebar Widgets */
-        .sidebar-widget { background: var(--card-bg); padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .sidebar-widget h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
-        .live-badge { display: inline-block; background: #22c55e; color: white; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: bold; margin-left: 5px; }
-
-        /* Footer */
-        footer { background: var(--primary); color: #94a3b8; padding: 40px 5% 20px; margin-top: 50px; font-size: 13px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; max-width: 1300px; margin: auto; }
-        .footer-sec h4 { color: white; font-size: 16px; margin-bottom: 15px; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 4px; }
-        .footer-sec p, .footer-sec a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 8px; }
-        .copyright { text-align: center; border-top: 1px solid #334155; margin-top: 30px; padding-top: 20px; font-size: 12px; }
-
-        @media (max-width: 900px) {
-            .container { grid-template-columns: 1fr; }
-        }
-    </style>
+    </script>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-900 font-sans flex flex-col min-h-screen">
 
     <!-- Top Info Bar -->
-    <div class="top-bar">
-        <span>📍 Ludhiana, Punjab | Govt MSME Reg: UDYAM-PB-12-0312527</span>
-        <div>
-            <span>📞 +91 8679703476</span>
+    <div class="bg-secondary text-slate-300 text-xs py-2 border-b border-slate-700">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center flex-wrap gap-2">
+            <div>
+                <span class="font-semibold text-red-500"><i class="fas fa-certificate mr-1"></i> MSME Registered:</span> UDYAM-PB-12-0312527 | Ludhiana, Punjab
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="mailto:sameermalik91234@gmail.com" class="hover:text-white"><i class="fas fa-envelope mr-1"></i> sameermalik91234@gmail.com</a>
+                <a href="tel:8679703476" class="hover:text-white"><i class="fas fa-phone mr-1"></i> +91 8679703476</a>
+            </div>
         </div>
     </div>
 
-    <!-- Breaking News Ticker (Powered by Node.js Backend API) -->
-    <div class="ticker-wrap">
-        <div class="ticker-title">BREAKING</div>
-        <div class="ticker-text" id="node-ticker">
-            Loading latest headline updates from Node.js Express Server...
+    <!-- Header / Navbar -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="./index.html" class="flex items-center space-x-3">
+                <div class="bg-primary text-white p-2.5 rounded-lg font-bold text-2xl tracking-wider">PNN</div>
+                <div>
+                    <h1 class="text-2xl font-extrabold text-secondary tracking-tight">PUNJAB NEWS <span class="text-primary">NRI</span></h1>
+                    <p class="text-xs text-slate-500 font-medium tracking-widest uppercase">Truth • Tradition • Global Voice</p>
+                </div>
+            </a>
+            <nav class="hidden md:flex space-x-6 font-semibold text-slate-700">
+                <a href="./index.html" class="text-primary hover:text-red-700">Home</a>
+                <a href="./about.html" class="hover:text-primary transition">About Us</a>
+                <a href="./contact.html" class="hover:text-primary transition">Contact</a>
+                <a href="./privacy.html" class="hover:text-primary transition">Privacy Policy</a>
+                <a href="./dashboard.html" class="bg-slate-100 text-slate-800 px-3 py-1 rounded-md border border-slate-300 hover:bg-slate-200 transition"><i class="fas fa-user-shield mr-1"></i> Dashboard</a>
+            </nav>
         </div>
-    </div>
-
-    <!-- Main Header -->
-    <header>
-        <h1>PUNJAB NEWS NRI</h1>
-        <p>Independent News Portal for Punjab & Global Punjabi Diaspora</p>
+        <!-- News Category Nav -->
+        <div class="bg-slate-100 border-t border-slate-200 overflow-x-auto">
+            <div class="max-w-7xl mx-auto px-4 py-2 flex space-x-6 text-sm font-semibold whitespace-nowrap">
+                <a href="#" class="text-primary">🇮🇳 Punjab Breaking</a>
+                <a href="#" class="hover:text-primary">✈️ NRI Diaspora</a>
+                <a href="#" class="hover:text-primary">🌐 World Updates</a>
+                <a href="#" class="hover:text-primary">💼 Business & Economy</a>
+                <a href="#" class="hover:text-primary">🗳️ Politics</a>
+                <a href="#" class="hover:text-primary">🌾 Agriculture</a>
+            </div>
+        </div>
     </header>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="punjab-news.html">Punjab News</a></li>
-            <li><a href="nri-updates.html">NRI Updates</a></li>
-            <li><a href="world.html">World & National</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        </ul>
-    </nav>
-
-    <!-- Main Grid -->
-    <div class="container">
-        
-        <!-- Left Side: Main News Grid -->
-        <main>
-            <div class="section-title">Top Stories</div>
-            
-            <div class="news-grid" id="news-container">
-                <!-- News Item 1 -->
-                <article class="card">
-                    <img src="https://via.placeholder.com/400x220" alt="News Image">
-                    <div class="card-body">
-                        <span class="card-tag">PUNJAB</span>
-                        <h3>Development Projects Announced in Ludhiana Region</h3>
-                        <p>Latest infrastructure and community development initiatives launched for citizens...</p>
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow">
+        <!-- Hero Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <!-- Main Featured Story -->
+            <div class="lg:col-span-2 bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="relative h-80 bg-slate-800 text-white flex items-end p-6" style="background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1000&q=80') center/cover;">
+                    <div>
+                        <span class="bg-primary text-white text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">NRI Special</span>
+                        <h2 class="text-3xl font-serif font-bold leading-tight mb-2">Global Punjabi Diaspora Expands Economic & Cultural Ties Worldwide</h2>
+                        <p class="text-slate-200 text-sm">Key developments in international policy, trade initiatives, and community leadership shaping the diaspora experience.</p>
                     </div>
-                </article>
+                </div>
+                <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+                    <span><i class="far fa-clock mr-1"></i> Updated 30 mins ago</span>
+                    <span><i class="fas fa-user-edit mr-1"></i> Editorial Team, Ludhiana HQ</span>
+                </div>
+            </div>
 
-                <!-- News Item 2 -->
-                <article class="card">
-                    <img src="https://via.placeholder.com/400x220" alt="News Image">
-                    <div class="card-body">
-                        <span class="card-tag">NRI SPECIAL</span>
-                        <h3>New Immigration Rules Updates for Canada & UK Diaspora</h3>
-                        <p>Essential guidance for Punjabi NRIs residing across international destinations...</p>
+            <!-- Top Stories Sidebar -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-lg font-bold text-secondary border-b-2 border-primary pb-2 mb-4">Latest Headlines</h3>
+                    <div class="space-y-4">
+                        <article class="border-b border-slate-100 pb-3">
+                            <span class="text-xs text-red-600 font-bold uppercase">Punjab</span>
+                            <h4 class="font-semibold text-sm hover:text-primary cursor-pointer transition">New Infrastructure Development Schemes Announced in Ludhiana</h4>
+                            <p class="text-xs text-slate-500 mt-1">Samrala Chowk traffic management and road upgrades prioritized.</p>
+                        </article>
+                        <article class="border-b border-slate-100 pb-3">
+                            <span class="text-xs text-blue-600 font-bold uppercase">NRI Affairs</span>
+                            <h4 class="font-semibold text-sm hover:text-primary cursor-pointer transition">State Government Launches Portal for Diaspora Legal Assistance</h4>
+                            <p class="text-xs text-slate-500 mt-1">Fast-track resolution mechanisms established for property matters.</p>
+                        </article>
+                        <article>
+                            <span class="text-xs text-green-600 font-bold uppercase">Market</span>
+                            <h4 class="font-semibold text-sm hover:text-primary cursor-pointer transition">Agricultural Tech Solutions Adoption Reaches Record High</h4>
+                            <p class="text-xs text-slate-500 mt-1">Modern advertising and agricultural innovations boost trade output.</p>
+                        </article>
                     </div>
-                </article>
-            </div>
-        </main>
-
-        <!-- Right Side: Node.js Dynamic Widgets & Enterprise Info -->
-        <aside>
-            <!-- Node.js Live Weather Widget -->
-            <div class="sidebar-widget">
-                <h3>Live Weather <span class="live-badge">NODE API</span></h3>
-                <p id="weather-info">Fetching Live Punjab Weather...</p>
-            </div>
-
-            <!-- Meta Business Details (Required for Verification) -->
-            <div class="sidebar-widget">
-                <h3>Verified Publisher</h3>
-                <p style="font-size:12px; color:#475569; line-height:1.6;">
-                    <strong>Enterprise:</strong> PUNJAB NEWS NRI<br>
-                    <strong>UDYAM Reg:</strong> UDYAM-PB-12-0312527<br>
-                    <strong>Category:</strong> Advertising & Media Services<br>
-                    <strong>Office:</strong> Samrala Chowk, Ludhiana, Punjab
-                </p>
-            </div>
-        </aside>
-
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-sec">
-                <h4>PUNJAB NEWS NRI</h4>
-                <p>Providing high-integrity news and media coverage globally for Punjab and the NRI community.</p>
-            </div>
-            
-            <div class="footer-sec">
-                <h4>Important Links</h4>
-                <a href="about.html">About Us</a>
-                <a href="contact.html">Contact Us</a>
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
-            </div>
-
-            <div class="footer-sec">
-                <h4>Official Registered Contact</h4>
-                <p>Address: Building 2, Samrala Chowk, Ludhiana, Punjab - 141008</p>
-                <p>Phone: +91 8679703476</p>
-                <p>Email: sameermalik91234@gmail.com</p>
+                </div>
+                <a href="./about.html" class="mt-4 block text-center bg-slate-800 text-white font-semibold text-xs py-2.5 rounded-lg hover:bg-slate-900 transition">About Punjab News NRI</a>
             </div>
         </div>
 
-        <div class="copyright">
-            <p>© 2026 PUNJAB NEWS NRI. Registered Micro Enterprise under Ministry of MSME, Govt of India (Udyam-PB-12-0312527).</p>
+        <!-- Dynamic LocalStorage News Section -->
+        <div class="mb-12">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-serif font-bold text-secondary">Live News Feed</h3>
+                <span class="text-xs bg-red-100 text-primary font-bold px-3 py-1 rounded-full"><i class="fas fa-sync-alt mr-1"></i> Live Storage Synced</span>
+            </div>
+            <div id="dynamicNewsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Javascript will load posts here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-slate-300 pt-10 pb-6 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+                <h4 class="text-white font-bold text-lg mb-3">PUNJAB NEWS NRI</h4>
+                <p class="text-xs leading-relaxed text-slate-400">Official media publication dedicated to timely, unbiased news for Punjab and the worldwide NRI community. Registered Micro Enterprise under M/o MSME, Govt of India.</p>
+            </div>
+            <div>
+                <h5 class="text-white font-semibold text-sm mb-3">Quick Navigation</h5>
+                <ul class="text-xs space-y-2">
+                    <li><a href="./index.html" class="hover:text-white">Home</a></li>
+                    <li><a href="./about.html" class="hover:text-white">About Us</a></li>
+                    <li><a href="./contact.html" class="hover:text-white">Contact & Support</a></li>
+                    <li><a href="./privacy.html" class="hover:text-white">Privacy Policy & Terms</a></li>
+                    <li><a href="./dashboard.html" class="hover:text-white">Editor Dashboard</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-white font-semibold text-sm mb-3">Enterprise Details</h5>
+                <ul class="text-xs space-y-2 text-slate-400">
+                    <li><strong>Udyam Reg:</strong> UDYAM-PB-12-0312527</li>
+                    <li><strong>Category:</strong> Micro Enterprise (Services)</li>
+                    <li><strong>NIC Code:</strong> 73100 - Advertising</li>
+                    <li><strong>Location:</strong> Ludhiana, Punjab 141008</li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-white font-semibold text-sm mb-3">Official Communication</h5>
+                <p class="text-xs text-slate-400 mb-2"><i class="fas fa-envelope mr-1"></i> sameermalik91234@gmail.com</p>
+                <p class="text-xs text-slate-400 mb-2"><i class="fas fa-phone mr-1"></i> +91 8679703476</p>
+                <p class="text-xs text-slate-400"><i class="fas fa-map-marker-alt mr-1"></i> Samrala Chowk, Ludhiana, Punjab 141008</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 border-t border-slate-800 pt-4 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+            <p>© 2026 PUNJAB NEWS NRI. All rights reserved.</p>
+            <p>Meta Business & Custom Domain Ready</p>
         </div>
     </footer>
 
-    <!-- JavaScript to Fetch Live Data from Node.js Backend -->
+    <!-- Script to Load News from LocalStorage -->
     <script>
-        // Example: Fetching dynamic content from Node.js API endpoint
-        async function fetchNodeBackendData() {
-            try {
-                // If you run Node.js backend server on http://localhost:5000/api/ticker
-                // const res = await fetch('http://localhost:5000/api/ticker');
-                // const data = await res.json();
-                
-                // Simulated dynamic update for preview:
-                document.getElementById('node-ticker').innerText = "🔥 NRI Special: New Advisory Issued for Overseas Punjabi Diaspora | Ludhiana News Update";
-                document.getElementById('weather-info').innerHTML = "🌡️ <strong>Ludhiana:</strong> 28°C, Clear Sky";
-            } catch (err) {
-                console.log("Node backend loading...", err);
+        document.addEventListener('DOMContentLoaded', () => {
+            const defaultPosts = [
+                { id: 1, title: 'Punjab Agri-Tech Summit 2026 Focuses on Export Innovations', category: 'Punjab', date: '2026-08-25', content: 'Key agricultural policies and diaspora investments discussed in new regional summit.' },
+                { id: 2, title: 'NRI Advisory Council Setup to Address Diaspora Property Issues', category: 'NRI Diaspora', date: '2026-08-24', content: 'Legal framework updated to streamline remote dispute resolutions for non-resident Punjabis.' },
+                { id: 3, title: 'Digital Advertising Industry Sees Rapid Growth in Ludhiana Hub', category: 'Business', date: '2026-08-22', content: 'Local micro-enterprises expand digital outreach under government encouragement programs.' }
+            ];
+
+            let posts = JSON.parse(localStorage.getItem('pnn_posts'));
+            if (!posts || posts.length === 0) {
+                localStorage.setItem('pnn_posts', JSON.stringify(defaultPosts));
+                posts = defaultPosts;
             }
-        }
-        fetchNodeBackendData();
+
+            const grid = document.getElementById('dynamicNewsGrid');
+            grid.innerHTML = posts.map(post => `
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-bold text-red-600 uppercase tracking-wider">${post.category || 'General'}</span>
+                        <h4 class="font-serif font-bold text-lg text-secondary mt-1 mb-2">${post.title}</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">${post.content}</p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-100 flex justify-between items-center text-xs text-slate-400">
+                        <span><i class="far fa-calendar-alt mr-1"></i> ${post.date}</span>
+                        <span class="font-medium text-slate-700">Verified Article</span>
+                    </div>
+                </div>
+            `).join('');
+        });
     </script>
 </body>
 </html>
