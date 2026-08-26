@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor Dashboard | PUNJAB NEWS NRI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { primary: '#B91C1C', secondary: '#1E293B' } } }
+        }
+    </script>
+</head>
+<body class="bg-slate-100 text-slate-900 font-sans min-h-screen flex flex-col">
+
+    <!-- Dashboard Top Nav -->
+    <header class="bg-secondary text-white px-6 py-4 flex justify-between items-center shadow-lg">
+        <div class="flex items-center space-x-3">
+            <span class="bg-primary text-white font-bold px-2.5 py-1 rounded">PNN</span>
+            <span class="font-bold text-lg">PUNJAB NEWS NRI — Content Management Desk</span>
+        </div>
+        <a href="./index.html" class="text-xs bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded-lg transition"><i class="fas fa-globe mr-1"></i> View Main Site</a>
+    </header>
+
+    <div class="flex flex-grow flex-col lg:flex-row">
+        <!-- Sidebar -->
+        <aside class="w-full lg:w-64 bg-slate-800 text-slate-300 p-6 space-y-6">
+            <div class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Navigation</div>
+            <nav class="space-y-2 text-sm font-medium">
+                <a href="#" class="flex items-center space-x-3 bg-primary text-white p-2.5 rounded-lg"><i class="fas fa-newspaper"></i> <span>Manage Posts</span></a>
+                <a href="./about.html" class="flex items-center space-x-3 text-slate-300 hover:bg-slate-700 p-2.5 rounded-lg transition"><i class="fas fa-certificate"></i> <span>Udyam Verification</span></a>
+                <a href="./contact.html" class="flex items-center space-x-3 text-slate-300 hover:bg-slate-700 p-2.5 rounded-lg transition"><i class="fas fa-envelope"></i> <span>Enquiries</span></a>
+            </nav>
+            <div class="pt-6 border-t border-slate-700 text-xs text-slate-400 space-y-2">
+                <p><strong>Status:</strong> Active Editor Session</p>
+                <p><strong>Storage Engine:</strong> Browser LocalStorage</p>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Panel -->
+        <main class="flex-grow p-6 lg:p-8 space-y-8">
+            <!-- Stats Row -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold text-slate-400 uppercase">Total Published Posts</p>
+                        <h4 id="statPostCount" class="text-2xl font-extrabold text-secondary mt-1">0</h4>
+                    </div>
+                    <div class="bg-red-50 text-primary p-3 rounded-lg"><i class="fas fa-file-alt text-2xl"></i></div>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold text-slate-400 uppercase">Enterprise Status</p>
+                        <h4 class="text-lg font-bold text-green-600 mt-1">MSME Verified</h4>
+                    </div>
+                    <div class="bg-green-50 text-green-600 p-3 rounded-lg"><i class="fas fa-check-circle text-2xl"></i></div>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold text-slate-400 uppercase">Active Domain</p>
+                        <h4 class="text-sm font-bold text-slate-700 mt-1">Meta Verification Ready</h4>
+                    </div>
+                    <div class="bg-blue-50 text-blue-600 p-3 rounded-lg"><i class="fas fa-shield-alt text-2xl"></i></div>
+                </div>
+            </div>
+
+            <!-- News Post Creator Form & Listing Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Add New News Item Form -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="text-lg font-bold text-secondary mb-4 border-b pb-2"><i class="fas fa-plus-circle text-primary mr-1"></i> Add News Article</h3>
+                    <form id="addNewsForm" class="space-y-4 text-sm">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Article Title</label>
+                            <input type="text" id="postTitle" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-primary focus:outline-none" placeholder="Enter post title">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Category</label>
+                            <select id="postCategory" class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-primary focus:outline-none">
+                                <option value="Punjab">Punjab Breaking</option>
+                                <option value="NRI Diaspora">NRI Diaspora</option>
+                                <option value="World">World Updates</option>
+                                <option value="Business">Business & Economy</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Article Content</label>
+                            <textarea id="postContent" rows="4" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-primary focus:outline-none" placeholder="Write news summary or content..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white font-bold py-2.5 rounded-lg hover:bg-red-800 transition">Publish to LocalStorage Feed</button>
+                    </form>
+                </div>
+
+                <!-- Existing Posts Management Table -->
+                <div class="lg:col-span-2 bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="text-lg font-bold text-secondary mb-4 border-b pb-2"><i class="fas fa-tasks text-slate-600 mr-1"></i> Published Articles Management</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 uppercase">
+                                    <th class="p-3">Title</th>
+                                    <th class="p-3">Category</th>
+                                    <th class="p-3">Date</th>
+                                    <th class="p-3 text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dashboardPostsTable" class="divide-y divide-slate-100">
+                                <!-- Dynamic LocalStorage Data Rendered Here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JS Logic for Dynamic Operations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDashboardData();
+
+            document.getElementById('addNewsForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const title = document.getElementById('postTitle').value;
+                const category = document.getElementById('postCategory').value;
+                const content = document.getElementById('postContent').value;
+                const date = new Date().toISOString().split('T')[0];
+
+                const posts = JSON.parse(localStorage.getItem('pnn_posts')) || [];
+                const newPost = { id: Date.now(), title, category, content, date };
+                posts.unshift(newPost);
+
+                localStorage.setItem('pnn_posts', JSON.stringify(posts));
+                document.getElementById('addNewsForm').reset();
+                loadDashboardData();
+            });
+        });
+
+        function loadDashboardData() {
+            const posts = JSON.parse(localStorage.getItem('pnn_posts')) || [];
+            document.getElementById('statPostCount').innerText = posts.length;
+
+            const tbody = document.getElementById('dashboardPostsTable');
+            if (posts.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-slate-400">No articles available. Add your first post!</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = posts.map(post => `
+                <tr class="hover:bg-slate-50">
+                    <td class="p-3 font-semibold text-slate-800">${post.title}</td>
+                    <td class="p-3"><span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium">${post.category}</span></td>
+                    <td class="p-3 text-slate-400">${post.date}</td>
+                    <td class="p-3 text-right">
+                        <button onclick="deletePost(${post.id})" class="text-red-600 hover:text-red-800 font-bold"><i class="fas fa-trash-alt mr-1"></i> Delete</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function deletePost(id) {
+            let posts = JSON.parse(localStorage.getItem('pnn_posts')) || [];
+            posts = posts.filter(post => post.id !== id);
+            localStorage.setItem('pnn_posts', JSON.stringify(posts));
+            loadDashboardData();
+        }
+    </script>
+</body>
+</html>
