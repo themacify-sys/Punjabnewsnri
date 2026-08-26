@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | PUNJAB NEWS NRI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { primary: '#B91C1C', secondary: '#1E293B' } } }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans flex flex-col min-h-screen">
+
+    <header class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="./index.html" class="flex items-center space-x-3">
+                <div class="bg-primary text-white p-2.5 rounded-lg font-bold text-2xl">PNN</div>
+                <div>
+                    <h1 class="text-2xl font-extrabold text-secondary">PUNJAB NEWS <span class="text-primary">NRI</span></h1>
+                    <p class="text-xs text-slate-500 font-medium uppercase">Official Media Portal</p>
+                </div>
+            </a>
+            <nav class="hidden md:flex space-x-6 font-semibold text-slate-700">
+                <a href="./index.html" class="hover:text-primary transition">Home</a>
+                <a href="./about.html" class="hover:text-primary transition">About Us</a>
+                <a href="./contact.html" class="text-primary">Contact</a>
+                <a href="./privacy.html" class="hover:text-primary transition">Privacy Policy</a>
+                <a href="./dashboard.html" class="bg-slate-100 text-slate-800 px-3 py-1 rounded-md border border-slate-300">Dashboard</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-12 flex-grow">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-secondary">Contact Our Editorial & Business Desk</h2>
+            <p class="text-slate-600 text-sm mt-2">Get in touch for news submissions, press releases, media enquiries, or verification support.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Official Details Card -->
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
+                <h3 class="text-xl font-bold text-secondary mb-6 border-b pb-3">Official Communication Details</h3>
+
+                <div class="space-y-6 text-sm">
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-red-50 text-primary p-3 rounded-lg"><i class="fas fa-building text-xl"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Enterprise Legal Name</h4>
+                            <p class="text-slate-600">PUNJAB NEWS NRI</p>
+                            <p class="text-xs text-slate-400 mt-0.5">MSME Reg: UDYAM-PB-12-0312527</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-red-50 text-primary p-3 rounded-lg"><i class="fas fa-map-marker-alt text-xl"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Physical Registered Address</h4>
+                            <p class="text-slate-600">Flat/Door/Block No. 2, PUNJAB NEWS NRI</p>
+                            <p class="text-slate-600">Samrala Chowk, Block A, Ludhiana</p>
+                            <p class="text-slate-600">State: PUNJAB, District: LUDHIANA, PIN: 141008</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-red-50 text-primary p-3 rounded-lg"><i class="fas fa-envelope text-xl"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Official Email</h4>
+                            <a href="mailto:sameermalik91234@gmail.com" class="text-primary hover:underline font-medium">sameermalik91234@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-red-50 text-primary p-3 rounded-lg"><i class="fas fa-phone text-xl"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Phone Support</h4>
+                            <a href="tel:8679703476" class="text-slate-700 font-medium">+91 8679703476</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
+                <h3 class="text-xl font-bold text-secondary mb-6 border-b pb-3">Send Us an Enquiry</h3>
+                <div id="formStatus" class="hidden mb-4 p-4 rounded-lg bg-green-100 text-green-800 text-sm font-semibold">
+                    Thank you! Your message has been sent successfully to sameermalik91234@gmail.com.
+                </div>
+                <form id="contactForm" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Your Full Name</label>
+                        <input type="text" required class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-primary focus:outline-none" placeholder="Enter your full name">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Email Address</label>
+                        <input type="email" required class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-primary focus:outline-none" placeholder="name@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Subject</label>
+                        <input type="text" required class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-primary focus:outline-none" placeholder="Media enquiry / Advertising / General">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Message</label>
+                        <textarea rows="4" required class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-primary focus:outline-none" placeholder="Write your query here..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-primary text-white font-bold py-3 rounded-lg hover:bg-red-800 transition">Submit Enquiry</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-secondary text-slate-400 text-xs py-6 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p>© 2026 PUNJAB NEWS NRI | Udyam Reg: UDYAM-PB-12-0312527</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('formStatus').classList.remove('hidden');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
